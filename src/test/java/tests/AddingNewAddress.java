@@ -1,8 +1,12 @@
 package tests;
 
+import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.When;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import pages.HomePage;
 import pages.LogInPage;
@@ -20,7 +24,7 @@ public class AddingNewAddress {
                 "src/main/resources/drivers/chromedriver.exe");
 
         driver = new ChromeDriver();
-        driver.manage().window().maximize();
+        driver.manage().window();
         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
     }
 
@@ -36,6 +40,26 @@ public class AddingNewAddress {
         YourAccountPage yourAccountPage = new YourAccountPage(driver);
         yourAccountPage.addAddressesButtonYourAccountPageClick();
 
-
     }
+
+//    @Given("User is on Your Account Addresses page")
+//    public void openAddressesForm(){
+//        System.setProperty("webdriver.chrome.driver",
+//                "src/main/resources/drivers/chromedriver.exe");
+//
+//        driver = new ChromeDriver();
+//        driver.manage().window();
+//        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+//
+//        driver.get("https://mystore-testlab.coderslab.pl/");
+//        HomePage homePage = new HomePage(driver);
+//        homePage.signInButtonHomePageClick();
+//
+//        LogInPage logInPage = new LogInPage(driver);
+//        logInPage.loginIntoExistingAccount();
+//
+//        YourAccountPage yourAccountPage = new YourAccountPage(driver);
+//        yourAccountPage.addAddressesButtonYourAccountPageClick();
+//    }
+
 }
