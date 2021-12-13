@@ -1,7 +1,5 @@
 package pages;
 
-import io.cucumber.java.en.And;
-import io.cucumber.java.en.When;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -12,60 +10,75 @@ public class YourAccountAddressesPage extends BasePage{
         super(driver);
     }
 
+    //create new address button
+    @FindBy (xpath = "//*[@id=\"content\"]/div[@class='addresses-footer']/a")
+    private WebElement createNewAddressButtonYourAccountAddressesPage;
+
+    /*form*/
+    //alias
     @FindBy (xpath = "//*[@id=\"content\"]/div/div/form/section/div[1]/div[1]/input")
     private WebElement aliasInputYourAccountAddressesPage;
-
+    //address
     @FindBy (xpath = "//*[@id=\"content\"]/div/div/form/section/div[6]/div[1]/input")
     private WebElement addressInputYourAccountAddressesPage;
-
+    //zip/postal code
     @FindBy (xpath = "//*[@id=\"content\"]/div/div/form/section/div[8]/div[1]/input")
     private WebElement zipPostalCodeInputYourAccountAddressesPage;
-
+    //city
     @FindBy (xpath = "//*[@id=\"content\"]/div/div/form/section/div[9]/div[1]/input")
     private WebElement cityInputYourAccountAddressesPage;
-
+    //country
     @FindBy (xpath = "//*[@id=\"content\"]/div/div/form/section/div[10]/div[1]/select")
     private WebElement countryFromDropListYourAccountAddressesPage;
-
+    //country - united kingdom
     @FindBy (xpath = "//*[@id=\"content\"]/div/div/form/section/div[10]/div[1]/select/option[2]")
     private WebElement unitedKingdomDropListOptionOnYourAccountAddressesPage;
-
+    //phone
     @FindBy (xpath = "//*[@id=\"content\"]/div/div/form/section/div[11]/div[1]/input")
     private WebElement phoneInputYourAccountAddressesPage;
-
+    //save button
     @FindBy (xpath = "//*[@id=\"content\"]/div/div/form/footer/button")
     private WebElement saveButtonYourAccountAddressesPage;
+    //address creation confirmation notification
+    @FindBy (xpath = "//*[@id=\"notifications\"]/div/article/ul/li")
+    private WebElement addAddressConfirmationYourAccountAddressesPage;
 
+    /*existing address*/
+    //alias
+    @FindBy (xpath = "//*[@id=\"address-18216\"]/div[1]/h4")
+    private WebElement addressAliasExistingAddressYourAccountAddressesPage;
 
-    @When("I enter \"<alias>\" in the Alias input")
-    public void fillAliasInput(){
-        aliasInputYourAccountAddressesPage.sendKeys();
+    public void addAddressesButtonYourAccountAddressesPageClick () {
+        createNewAddressButtonYourAccountAddressesPage.click();
     }
 
-    @And("I enter \"<address>\" in the Address input")
-    public void fillAddressInput(){
-        addressInputYourAccountAddressesPage.sendKeys();
-    }
+    public void addingNewAddressesOnYourAccountAddressesPage(String alias, String address, String zipPostalCode, String city, String country, String phone){
+        aliasInputYourAccountAddressesPage.click();
+        aliasInputYourAccountAddressesPage.sendKeys(alias);
 
-    @And("I enter \"<zip/postal code>\" in the Zip/Postal Code input")
-    public void fillZipPostalCodeInput(){
-        zipPostalCodeInputYourAccountAddressesPage.sendKeys();
-    }
+        addressInputYourAccountAddressesPage.click();
+        addressInputYourAccountAddressesPage.sendKeys(address);
 
-    @And("I enter \"<city>\" in the City input")
-    public void fillCityInput(){
-        cityInputYourAccountAddressesPage.sendKeys();
-    }
+        zipPostalCodeInputYourAccountAddressesPage.click();
+        zipPostalCodeInputYourAccountAddressesPage.sendKeys(zipPostalCode);
 
-    @And("I enter \"<country>\" from the Country droplist")
-    public void fillCountryInput(){
+        cityInputYourAccountAddressesPage.click();
+        cityInputYourAccountAddressesPage.sendKeys(city);
+
         countryFromDropListYourAccountAddressesPage.click();
-        unitedKingdomDropListOptionOnYourAccountAddressesPage.click();
+        countryFromDropListYourAccountAddressesPage.sendKeys(country);
+
+        phoneInputYourAccountAddressesPage.click();
+        phoneInputYourAccountAddressesPage.sendKeys(phone);
+
+        saveButtonYourAccountAddressesPage.click();
     }
 
-    @And("I enter \"<phone>\" in the Phone input")
-    public void fillPhoneInput(){
-        phoneInputYourAccountAddressesPage.sendKeys();
+    public String addAddressConfirmation(){
+        return addAddressConfirmationYourAccountAddressesPage.getText();
     }
 
+    public String existingAddressAliasYourAccountAddressesPage(){
+        return addressAliasExistingAddressYourAccountAddressesPage.getText();
+    }
 }

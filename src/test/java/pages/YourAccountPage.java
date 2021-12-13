@@ -10,7 +10,7 @@ public class YourAccountPage extends BasePage {
         super(driver);
     }
 
-    @FindBy (xpath = "//*[@id=\"address-link\"]")
+    @FindBy (xpath = "//*[@id=\"addresses-link\"]")
     private WebElement addAddressesButtonYourAccountPage;
 
     public void addAddressesButtonYourAccountPageClick () {
