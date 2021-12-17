@@ -10,10 +10,17 @@ public class YourAccountPage extends BasePage {
         super(driver);
     }
 
-    @FindBy (xpath = "//*[@id=\"addresses-link\"]")
+    @FindBy (xpath = "//*[@href=\"https://mystore-testlab.coderslab.pl/index.php?controller=addresses\"]")
     private WebElement addAddressesButtonYourAccountPage;
 
-    public void addAddressesButtonYourAccountPageClick () {
+    @FindBy (xpath = "//*[@id=\"_desktop_logo\"]/a")
+    private WebElement homePageButtonYourAccountPage;
+
+    public void addAddressesButtonYourAccountPageClick() {
         addAddressesButtonYourAccountPage.click();
+    }
+
+    public void homePageButtonYourAccountPageClick() {
+        homePageButtonYourAccountPage.click();
     }
 }

@@ -44,7 +44,7 @@ public class AddingNewAddressStepDefinitions {
     }
 
 
-    @And ("^User enters \"(.*)\" \"(.*)\" \"(.*)\" \"(.*)\" \"(.*)\" \"(.*)\"$")
+    @And ("^User enters \"(.*)\" \"(.*)\" \"(.*)\" \"(.*)\" \"(.*)\" \"(.*)\" and then confirmation button$")
     public void fillingAddNewAddressesYourAccountAddressesPage(String alias, String address, String zipPostalCode, String city, String country, String phone){
         YourAccountAddressesPage yourAccountAddressesPage = new YourAccountAddressesPage(driver);
         yourAccountAddressesPage.addingNewAddressesOnYourAccountAddressesPage(alias, address, zipPostalCode, city, country, phone);
@@ -52,9 +52,18 @@ public class AddingNewAddressStepDefinitions {
         Assert.assertEquals("Address successfully added!", yourAccountAddressesPage.addAddressConfirmation());
     }
 
-    @Then ("^Check if \"(.*)\" data is correct$")
-    public void checkingIfAddedAddressDataIsCorrect(String alias){
+//    @Then ("^Check if \"(.*)\" data is correct$")
+//    public void checkingIfAddedAddressDataIsCorrect(String alias){
+//        YourAccountAddressesPage yourAccountAddressesPage = new YourAccountAddressesPage(driver);
+//        Assert.assertEquals(alias, yourAccountAddressesPage.existingAddressAliasYourAccountAddressesPage());
+//    }
+
+    @And ("User can delete the address")
+    public void deletingCreatedAddressYourAccountAddressesPage(){
         YourAccountAddressesPage yourAccountAddressesPage = new YourAccountAddressesPage(driver);
-        Assert.assertEquals(alias, yourAccountAddressesPage.existingAddressAliasYourAccountAddressesPage());
+        yourAccountAddressesPage.deletingExistingAddressYourAccountAddressesPage();
+
+        Assert.assertEquals("Address successfully deleted!",yourAccountAddressesPage.deleteAddressConfirmation());
     }
+
 }

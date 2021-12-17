@@ -39,14 +39,22 @@ public class YourAccountAddressesPage extends BasePage{
     //save button
     @FindBy (xpath = "//*[@id=\"content\"]/div/div/form/footer/button")
     private WebElement saveButtonYourAccountAddressesPage;
-    //address creation confirmation notification
+
+    /*notifications*/
+    //address creation confirmation
     @FindBy (xpath = "//*[@id=\"notifications\"]/div/article/ul/li")
     private WebElement addAddressConfirmationYourAccountAddressesPage;
+    //address deletion confirmation
+    @FindBy (xpath = "//*[@id=\"notifications\"]/div/article/ul/li")
+    private WebElement deleteAddressConfirmationYourAccountAddressesPage;
 
     /*existing address*/
     //alias
-    @FindBy (xpath = "//*[@id=\"address-18216\"]/div[1]/h4")
-    private WebElement addressAliasExistingAddressYourAccountAddressesPage;
+    @FindBy (className = "address")
+    private WebElement aliasExistingAddressYourAccountAddressesPage;
+    //delete button
+    @FindBy (xpath = "//span[text()='Delete']")
+    private WebElement deleteButtonExistingAddressYourAccountAddressesPage;
 
     public void addAddressesButtonYourAccountAddressesPageClick () {
         createNewAddressButtonYourAccountAddressesPage.click();
@@ -79,6 +87,14 @@ public class YourAccountAddressesPage extends BasePage{
     }
 
     public String existingAddressAliasYourAccountAddressesPage(){
-        return addressAliasExistingAddressYourAccountAddressesPage.getText();
+        return aliasExistingAddressYourAccountAddressesPage.getText();
+    }
+
+    public void deletingExistingAddressYourAccountAddressesPage(){
+        deleteButtonExistingAddressYourAccountAddressesPage.click();
+    }
+
+    public String deleteAddressConfirmation(){
+        return deleteAddressConfirmationYourAccountAddressesPage.getText();
     }
 }

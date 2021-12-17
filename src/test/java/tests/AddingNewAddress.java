@@ -44,13 +44,13 @@ public class AddingNewAddress {
         yourAccountPage.addAddressesButtonYourAccountPageClick();
         //open your addresses page
         YourAccountAddressesPage yourAccountAddressesPage = new YourAccountAddressesPage(driver);
-        yourAccountAddressesPage.addingNewAddressesOnYourAccountAddressesPage("test 2", "test address 2", "11-111", "test city 2","United Kingdom", "000 555 000");
+        yourAccountAddressesPage.addingNewAddressesOnYourAccountAddressesPage("test 2", "test address 2", "11-111", "test city 2", "United Kingdom", "000 555 000");
 
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
         yourAccountAddressesPage.addAddressConfirmation();
-        Assert.assertEquals("Address successfully added!",yourAccountAddressesPage.addAddressConfirmation());
+        Assert.assertEquals("Address successfully added!", yourAccountAddressesPage.addAddressConfirmation());
 
-        
+
     }
 }
