@@ -8,8 +8,6 @@ import org.openqa.selenium.io.FileHandler;
 import org.openqa.selenium.support.FindBy;
 
 import java.io.File;
-import java.io.IOException;
-import java.util.concurrent.TimeUnit;
 
 public class ShoppingCartPage extends BasePage{
     public ShoppingCartPage (WebDriver driver) {
@@ -48,7 +46,7 @@ public class ShoppingCartPage extends BasePage{
     }
     //choosing PrestaShop shopping method
     public void choosingPrestaShopShoppingMethod(){
-        prestaShopShippingMethod.click();
+    //    prestaShopShippingMethod.click();
         shippingMethodContinue.click();
     }
     //choosing Pay by Check payment method
@@ -58,10 +56,8 @@ public class ShoppingCartPage extends BasePage{
         orderButton.click();
     }
     //taking a screenshot
-    public void takingScreenshot() throws IOException {
-        File src = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-        FileHandler.copy(src, new File("C:\\Users\\piotr\\Documents\\CodersLab\\FinalTask\\src\\attachments"));
+    public void takingScreenshot() throws Exception {
+        File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+        FileHandler.copy(screenshot, new File("C:\\New folder\\screenshot.png"));
     }
-
-
 }

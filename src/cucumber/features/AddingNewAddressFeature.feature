@@ -4,7 +4,8 @@ Feature: Adding new address
     Given User is already logged in and on Your Account Addresses page
     When User clicks on Create new address
     And User enters "<alias>" "<address>" "<zipPostalCode>" "<city>" "<country>" "<phone>" and then confirmation button
-#    And Check if "<alias>" data is correct < might be able to do that via following-sibling in xpath
+    And Check if address alias is "address 1"
+    And Check if address body is "John Doe<br>John Doe's Street<br>SW1A 0PW<br>London<br>United Kingdom<br>020 1234 5555"
     And User can delete the address
 
   Examples:

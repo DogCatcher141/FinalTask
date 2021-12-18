@@ -20,12 +20,12 @@ public class OrderingProductTest {
                 "src/main/resources/drivers/chromedriver.exe");
 
         driver = new ChromeDriver();
-        driver.manage().window();
+        driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
     }
 
     @Test
-    public void orderingProduct() throws IOException {
+    public void orderingProduct() throws Exception {
         //opening store's main page
         driver.get("https://mystore-testlab.coderslab.pl/");
         HomePage homePage = new HomePage(driver);
@@ -52,7 +52,7 @@ public class OrderingProductTest {
         //selecting size
         hummingbirdPrintedSweaterPage.selectingSize("m");
         //choosing quantity
-        hummingbirdPrintedSweaterPage.choosingQuantity("1");
+        hummingbirdPrintedSweaterPage.choosingQuantity("5");
         //adding product to the cart
         hummingbirdPrintedSweaterPage.addToCartButtonClick();
         driver.manage().timeouts().implicitlyWait(6, TimeUnit.SECONDS);

@@ -3,6 +3,8 @@ package pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class YourAccountAddressesPage extends BasePage{
 
@@ -50,11 +52,14 @@ public class YourAccountAddressesPage extends BasePage{
 
     /*existing address*/
     //alias
-    @FindBy (className = "address")
+    @FindBy (xpath = "//h4[text()='address 1']")
     private WebElement aliasExistingAddressYourAccountAddressesPage;
     //delete button
     @FindBy (xpath = "//span[text()='Delete']")
     private WebElement deleteButtonExistingAddressYourAccountAddressesPage;
+    //address body
+    @FindBy (xpath = "//address")
+    private WebElement addressBody;
 
     public void addAddressesButtonYourAccountAddressesPageClick () {
         createNewAddressButtonYourAccountAddressesPage.click();
@@ -83,6 +88,9 @@ public class YourAccountAddressesPage extends BasePage{
     }
 
     public String addAddressConfirmation(){
+        WebDriverWait wait = new WebDriverWait(driver,30);
+        wait.until(ExpectedConditions.visibilityOf(addAddressConfirmationYourAccountAddressesPage));
+
         return addAddressConfirmationYourAccountAddressesPage.getText();
     }
 
@@ -90,11 +98,18 @@ public class YourAccountAddressesPage extends BasePage{
         return aliasExistingAddressYourAccountAddressesPage.getText();
     }
 
+    public String existingAddressBodyGetText(){
+        return addressBody.getText();
+    }
+
     public void deletingExistingAddressYourAccountAddressesPage(){
         deleteButtonExistingAddressYourAccountAddressesPage.click();
     }
 
     public String deleteAddressConfirmation(){
+        WebDriverWait wait = new WebDriverWait(driver,30);
+        wait.until(ExpectedConditions.visibilityOf(deleteAddressConfirmationYourAccountAddressesPage));
+
         return deleteAddressConfirmationYourAccountAddressesPage.getText();
     }
 }

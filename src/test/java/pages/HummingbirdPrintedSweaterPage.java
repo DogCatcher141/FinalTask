@@ -4,6 +4,9 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class HummingbirdPrintedSweaterPage extends BasePage{
     public HummingbirdPrintedSweaterPage (WebDriver driver){
@@ -28,6 +31,7 @@ public class HummingbirdPrintedSweaterPage extends BasePage{
     //add to cart button
     @FindBy (xpath = "//*[@id=\"add-to-cart-or-refresh\"]/div[2]/div/div[2]/button")
     private WebElement addToCartButton;
+    //proceed to checkout button
     @FindBy (xpath = "//*[@id=\"blockcart-modal\"]/div/div/div[2]/div/div[2]/div/div/a")
     private WebElement proceedToCheckoutButton;
 
@@ -70,10 +74,12 @@ public class HummingbirdPrintedSweaterPage extends BasePage{
     }
     //adding product to cart
     public void addToCartButtonClick(){
-        addToCartButton.sendKeys(Keys.ENTER);
+        addToCartButton.click();
     }
     //go to checkout
     public void proceedToCheckoutButtonClick(){
+        WebDriverWait wait = new WebDriverWait(driver,30);
+        wait.until(ExpectedConditions.elementToBeClickable(proceedToCheckoutButton));
         proceedToCheckoutButton.click();
     }
 }
