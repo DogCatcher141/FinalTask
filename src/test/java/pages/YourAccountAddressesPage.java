@@ -107,7 +107,7 @@ public class YourAccountAddressesPage extends BasePage{
     }
 
     public String deleteAddressConfirmation(){
-        WebDriverWait wait = new WebDriverWait(driver,30);
+        WebDriverWait wait = new WebDriverWait(driver,60);
         wait.until(ExpectedConditions.visibilityOf(deleteAddressConfirmationYourAccountAddressesPage));
 
         return deleteAddressConfirmationYourAccountAddressesPage.getText();
